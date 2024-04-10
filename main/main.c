@@ -21,7 +21,7 @@ typedef struct adc {
 } adc_t;
 
 int dead_zone(int val) {
-    if (val > -30 && val < 30) {
+    if (val > -180 && val < 180) {
         return 0;
     }
     return val;
@@ -77,7 +77,7 @@ void write_package(adc_t data) {
     uart_putc_raw(uart0, -1);
 }
 
-int main() {
+ int main() {
     stdio_init_all();
 
     xQueueAdc = xQueueCreate(32, sizeof(adc_t));
